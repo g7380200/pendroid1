@@ -18,8 +18,8 @@ public class MyButton extends TextButton implements InitableInterface {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 super.clicked(event, x, y);
-                Sound sound = Assets.manager.get(Assets.BTN_SOUND);
-                sound.play();
+                //Sound sound = Assets.manager.get(Assets.BTN_SOUND);
+                //sound.play();
             }
         });
     }

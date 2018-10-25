@@ -7,6 +7,10 @@ import com.faszallitok.nfl.MyGdxGame;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+		config.width = 1024;
+		config.height = 576;
+		config.title = "NeedForLegy: Mosquito Wanted";
+
 		new LwjglApplication(new MyGdxGame(), config);
 	}
 }
