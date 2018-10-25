@@ -50,6 +50,8 @@ public class Assets {
 
 	//Menu
 	public static final AssetDescriptor<Texture> BG_MENU = new AssetDescriptor<Texture>("bg.png", Texture.class);
+	public static final AssetDescriptor<Texture> MENU_ICON = new AssetDescriptor<Texture>("menu-icon.png", Texture.class);
+
 
 	//Button
 	public static final AssetDescriptor<Texture> BTN_BACK = new AssetDescriptor<Texture>("ui_textures/btn_back.png", Texture.class);
@@ -77,14 +79,8 @@ public class Assets {
 		manager.setLoader(BitmapFont.class, ".ttf", new FreetypeFontLoader(resolver));
 		manager.setLoader(BitmapFont.class, ".otf", new FreetypeFontLoader(resolver));
 
-		/*manager.load(GAME_BG);
-		manager.load(MENU);
-		manager.load(MENU_ICON);
-		*/
-
-		//manager.load(LOADING_ATLAS);
-
 		manager.load(BG_MENU);
+		manager.load(MENU_ICON);
 
 		manager.load(BTN_BACK);
 		manager.load(BTN_HOVER);

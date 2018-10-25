@@ -29,8 +29,8 @@ public class MenuStage extends MyStage {
 
         addActor(bg);
 
-        play = new MyButton("Play", game.getButtonStyle());
-        play.setPosition(getViewport().getWorldWidth() / 2 - play.getWidth() / 2, 270);
+        play = new MyButton("Játék", game.getButtonStyle());
+        play.setPosition(getViewport().getWorldWidth() / 2 - play.getWidth() / 2, 250);
         play.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -40,8 +40,8 @@ public class MenuStage extends MyStage {
         });
         addActor(play);
 
-        about = new MyButton("About", game.getButtonStyle());
-        about.setPosition(getViewport().getWorldWidth() / 2 - play.getWidth() / 2, 210);
+        about = new MyButton("A Játékról", game.getButtonStyle());
+        about.setPosition(getViewport().getWorldWidth() / 2 - play.getWidth() / 2, 190);
         about.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -51,8 +51,8 @@ public class MenuStage extends MyStage {
         });
         addActor(about);
 
-        quit = new MyButton("Quit", game.getButtonStyle());
-        quit.setPosition(getViewport().getWorldWidth() / 2 - play.getWidth() / 2, 150);
+        quit = new MyButton("Kilépés", game.getButtonStyle());
+        quit.setPosition(getViewport().getWorldWidth() / 2 - play.getWidth() / 2, 130);
         quit.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
