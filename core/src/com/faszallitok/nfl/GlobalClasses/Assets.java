@@ -53,8 +53,13 @@ public class Assets {
 	public static final AssetDescriptor<Texture> MENU = new AssetDescriptor<Texture>("menu.png", Texture.class);
 	public static final AssetDescriptor<Texture> MENU_ICON = new AssetDescriptor<Texture>("menu-icon.png", Texture.class);
 
+	//Game
+    public static final AssetDescriptor<Texture> AMAN = new AssetDescriptor<Texture>("amen.png", Texture.class);
+    public static final AssetDescriptor<Texture> BMAN = new AssetDescriptor<Texture>("bman.png", Texture.class);
+	public static final AssetDescriptor<Texture> SZUNYOG = new AssetDescriptor<Texture>("szunyog.png", Texture.class);
 
-	//Button
+
+    //Button
 	public static final AssetDescriptor<Texture> BTN_BACK = new AssetDescriptor<Texture>("ui_textures/btn_back.png", Texture.class);
 	public static final AssetDescriptor<Texture> BTN_HOVER = new AssetDescriptor<Texture>("ui_textures/btn_hover.png", Texture.class);
 
@@ -83,6 +88,10 @@ public class Assets {
 		manager.load(BG_MENU);
 		manager.load(MENU);
 		manager.load(MENU_ICON);
+
+		manager.load(AMAN);
+		manager.load(BMAN);
+		manager.load(SZUNYOG);
 
 		manager.load(BTN_BACK);
 		manager.load(BTN_HOVER);

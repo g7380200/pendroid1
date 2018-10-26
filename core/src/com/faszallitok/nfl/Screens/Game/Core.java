@@ -12,24 +12,23 @@ import com.faszallitok.nfl.MyBaseClasses.Scene2D.OneSpriteStaticActor;
 import com.faszallitok.nfl.MyBaseClasses.UI.MyButton;
 import com.faszallitok.nfl.MyGdxGame;
 
-public enum Adatok { NULL, ASEBESSEG, BSEBESSEG, SZUNYOGSEBESSEG, UT, KEZDOTAVOLSAG, REPIDO };
+enum Adatok { NULL, ASEBESSEG, BSEBESSEG, SZUNYOGSEBESSEG, UT, KEZDOTAVOLSAG, REPIDO };
 
 public class Core {
-    /*
 	public static float asebesseg;
 	public static float bsebesseg;
 	public static float szunyogsebesseg;
 	public static float ut;
 	public static float kezdotavolsag;
 
-	public static float szunyogpozicio;
-	public static float apozicio;
-	public static float bpozicio;
-	public static float tavolsag;
-	public static float repulttav;
-	public static boolean szunyogstart;
+	public float szunyogpozicio;
+	public float apozicio;
+	public float bpozicio;
+	public float tavolsag;
+	public float repulttav;
+	public boolean szunyogstart;
 
-	public static void CoreInit(float sa, float sb, float tavolsag, float szunyogsebesseg, float ut) {
+	public void CoreInit(float sa, float sb, float tavolsag, float szunyogsebesseg, float ut) {
 		this.asebesseg = sa;
 		this.bsebesseg = sb;
 		this.kezdotavolsag = tavolsag;
@@ -44,14 +43,14 @@ public class Core {
 		this.szunyogstart = true;
 	}
 
-	public static boolean Check(Adatok adat) {
+	public boolean Check(Adatok adat) {
 		if(adat == Adatok.NULL || adat == Adatok.REPIDO) {
 			if(RepIdo() * this.szunyogsebesseg <= this.ut) return false;
 		}
 		return true;
 	}
 
-	public static void KovIdo() {
+	public void KovIdo() {
 		float idoatolbig = this.tavolsag / (this.szunyogsebesseg + (this.szunyogstart ? this.bsebesseg : this.asebesseg));
 
 		float szunyogtavolsag = this.szunyogsebesseg * idoatolbig;
@@ -64,8 +63,8 @@ public class Core {
 		this.szunyogstart = !this.szunyogstart;
 	}
 
-	public static float RepIdo() {
+	public float RepIdo() {
 		float repido = this.tavolsag / (asebesseg + bsebesseg);
 		return repido;
-	}*/
+	}
 }

@@ -37,6 +37,19 @@ public class GameStage extends MyStage {
 		});
 		addActor(menu);
 
+		aman = new OneSpriteStaticActor(Assets.manager.get(Assets.AMAN));
+		aman.setSize(aman.getWidth() / 4, aman.getHeight() / 4);
+		addActor(aman);
+
+		bman = new OneSpriteStaticActor(Assets.manager.get(Assets.BMAN));
+        bman.setSize(bman.getWidth() / 4, bman.getHeight() / 4);
+        bman.setX(800);
+		addActor(bman);
+
+		szunyog = new OneSpriteStaticActor(Assets.manager.get(Assets.SZUNYOG));
+		szunyog.setSize(szunyog.getWidth() / 12, szunyog.getHeight() / 12);
+		addActor(szunyog);
+
 
 	}
 
