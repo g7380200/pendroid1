@@ -13,6 +13,7 @@ import com.faszallitok.nfl.MyBaseClasses.Scene2D.OneSpriteStaticActor;
 import com.faszallitok.nfl.MyBaseClasses.UI.MyButton;
 import com.faszallitok.nfl.MyGdxGame;
 import com.faszallitok.nfl.Screens.About.AboutScreen;
+import com.faszallitok.nfl.Screens.Data.DataScreen;
 import com.faszallitok.nfl.Screens.Game.GameScreen;
 
 public class MenuStage extends MyStage {
@@ -35,7 +36,7 @@ public class MenuStage extends MyStage {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 super.clicked(event, x, y);
-                getGame().setScreen(new GameScreen(getGame()));
+                getGame().setScreen(new DataScreen(getGame()));
             }
         });
         addActor(play);

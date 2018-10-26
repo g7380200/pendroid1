@@ -40,5 +40,6 @@ public class GameStage extends MyStage {
 
 	public float CoreInit(float sa, float sb, float tavolsag, float szunyogsebesseg, float ut) {
 		float repido = (sa + sb) / tavolsag;
+		return repido;
 	}
 }
