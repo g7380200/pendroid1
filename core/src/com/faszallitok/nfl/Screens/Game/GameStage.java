@@ -70,7 +70,7 @@ public class GameStage extends MyStage {
 		core.asebesseg = datas[0];
 		core.bsebesseg = datas[1];
 		core.szunyogsebesseg = datas[2];
-		core.kezdotavolsag = data[3];
+		core.kezdotavolsag = datas[3];
 		core.ut = datas[4];
 
 		core.CoreReset();

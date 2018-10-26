@@ -23,11 +23,10 @@ public class DataStage extends MyStage {
     LabelInput Bvel;
     LabelInput Szvel;
     LabelInput tav;
-    LabelInput Atav;
-    LabelInput Btav;
+    LabelInput ABtav;
     MyButton submit;
 
-    public float[] datas = new float[6];
+    public float[] datas = new float[5];
 
     public DataStage(Batch batch, MyGdxGame game) {
         super(new ExtendViewport(1024, 576, new OrthographicCamera(1024, 576)), batch, game);
@@ -57,15 +56,10 @@ public class DataStage extends MyStage {
         tav.setX(500);
         addActor(tav);
 
-        Atav = new LabelInput("'A' távolsága (m)", game.getLabelStyle(), this, 4);
-        Atav.setY(getViewport().getWorldHeight() - 250);
-        Atav.setX(500);
-        addActor(Atav);
-
-        Btav = new LabelInput("'B' távolsága (m)", game.getLabelStyle(), this, 5);
-        Btav.setY(getViewport().getWorldHeight() - 310);
-        Btav.setX(500);
-        addActor(Btav);
+        ABtav = new LabelInput("'A' és 'B' távolsága (m)", game.getLabelStyle(), this, 4);
+        ABtav.setY(getViewport().getWorldHeight() - 250);
+        ABtav.setX(500);
+        addActor(ABtav);
 
         submit = new MyButton("Ok", game.getButtonStyle());
         submit.setPosition(getViewport().getWorldWidth() / 2 - submit.getWidth() / 2, 20);
