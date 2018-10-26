@@ -1,8 +1,11 @@
 package com.faszallitok.nfl.Screens.Data;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -12,6 +15,7 @@ import com.faszallitok.nfl.MyBaseClasses.UI.LabelInput;
 import com.faszallitok.nfl.MyBaseClasses.UI.MyButton;
 import com.faszallitok.nfl.MyBaseClasses.UI.MyLabel;
 import com.faszallitok.nfl.MyGdxGame;
+import com.faszallitok.nfl.Screens.Game.GameScreen;
 
 public class DataStage extends MyStage {
 
@@ -23,41 +27,66 @@ public class DataStage extends MyStage {
     LabelInput Btav;
     MyButton submit;
 
+    public float[] datas = new float[6];
+
     public DataStage(Batch batch, MyGdxGame game) {
         super(new ExtendViewport(1024, 576, new OrthographicCamera(1024, 576)), batch, game);
 
-        InputListener listener = new InputListener();
-        Gdx.input.getTextInput(listener, "Kérem a sebességet", "", "Sebesség (m/s)");
+        for (int i = 0; i < datas.length; i++) {
+            datas[i] = 0;
+            System.out.println(datas[i]);
+        }
 
-        Avel = new LabelInput("'A' sebessége (m/s)", game.getLabelStyle());
+        //InputListener listener = new InputListener();
+        //Gdx.input.getTextInput(listener, "Kérem a sebességet", "", "Sebesség (m/s)");
+
+        Avel = new LabelInput("'A' sebessége (m/s)", game.getLabelStyle(), this, 0);
         Avel.setY(getViewport().getWorldHeight() - 180);
         addActor(Avel);
 
-        Bvel = new LabelInput("'B' sebessége (m/s)", game.getLabelStyle());
+        Bvel = new LabelInput("'B' sebessége (m/s)", game.getLabelStyle(), this, 1);
         Bvel.setY(getViewport().getWorldHeight() - 250);
         addActor(Bvel);
 
-        Szvel = new LabelInput("Szunyog sebessége (m/s)", game.getLabelStyle());
+        Szvel = new LabelInput("Szunyog sebessége (m/s)", game.getLabelStyle(), this, 2);
         Szvel.setY(getViewport().getWorldHeight() - 310);
         addActor(Szvel);
 
-        tav = new LabelInput("Repülni kívánt távolság (m)", game.getLabelStyle());
+        tav = new LabelInput("Repülni kívánt távolság (m)", game.getLabelStyle(), this, 3);
         tav.setY(getViewport().getWorldHeight() - 180);
         tav.setX(500);
         addActor(tav);
 
-        Atav = new LabelInput("'A' távolsága (m)", game.getLabelStyle());
+        Atav = new LabelInput("'A' távolsága (m)", game.getLabelStyle(), this, 4);
         Atav.setY(getViewport().getWorldHeight() - 250);
         Atav.setX(500);
         addActor(Atav);
 
-        Btav = new LabelInput("'B' távolsága (m)", game.getLabelStyle());
+        Btav = new LabelInput("'B' távolsága (m)", game.getLabelStyle(), this, 5);
         Btav.setY(getViewport().getWorldHeight() - 310);
         Btav.setX(500);
         addActor(Btav);
 
         submit = new MyButton("Ok", game.getButtonStyle());
         submit.setPosition(getViewport().getWorldWidth() / 2 - submit.getWidth() / 2, 20);
+        submit.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                super.clicked(event, x, y);
+
+                for(int i = 0; i < datas.length; i++)
+                    System.out.println(datas[i]);
+
+                for(int i = 0; i < datas.length; i++) {
+                    if(datas[i] == 0) {
+                        System.out.println("hiba");
+                        return;
+                    }
+                }
+
+                getGame().setScreen(new GameScreen(getGame(), datas));
+            }
+        });
         addActor(submit);
     }
 

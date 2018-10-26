@@ -21,7 +21,7 @@ public class GameStage extends MyStage {
 
 	Core core;
 
-	public GameStage(Batch batch, MyGdxGame game, final GameScreen screen) {
+	public GameStage(Batch batch, MyGdxGame game, final GameScreen screen, float[] datas) {
 		super(new ExtendViewport(1024, 576, new OrthographicCamera(1024, 576)), batch, game);
 		core = new Core();
 		core.scrwidth = 1024;
@@ -64,6 +64,28 @@ public class GameStage extends MyStage {
 		core.szunyogsebesseg = 30.0f;
 		core.ut = 100.0f;
 		core.kezdotavolsag = 70.0f;
+
+
+		//datas[] tömb:
+		//0: A sebesség
+		//1: B sebesség
+		//2: Szunyog sebesség
+		//3: távolság
+		//4: A távolság
+		//5: B távolság
+
+		core.asebesseg = datas[0];
+		core.bsebesseg = datas[1];
+		core.szunyogsebesseg = datas[2];
+		core.ut = datas[3];
+
+		core.ax = (int)datas[4];
+		core.ax = (int)datas[5];
+
+		core.szunyogx = (int)datas[4] + 150;
+		core.kezdotavolsag = datas[3];
+
+
 
 		core.CoreReset();
 		if(!core.Check()) System.exit(1);

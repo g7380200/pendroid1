@@ -12,9 +12,9 @@ public class GameScreen extends MyScreen {
     HUD hud;
     public boolean isPaused = false;
 
-    public GameScreen(MyGdxGame game) {
+    public GameScreen(MyGdxGame game, float datas[]) {
         super(game);
-        gameStage = new GameStage(spriteBatch, game, this);
+        gameStage = new GameStage(spriteBatch, game, this, datas);
         hud = new HUD(spriteBatch, game, this);
 
         InputMultiplexer inputMultiplexer = new InputMultiplexer();

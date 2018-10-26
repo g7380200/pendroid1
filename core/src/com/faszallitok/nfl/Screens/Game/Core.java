@@ -67,8 +67,8 @@ public class Core {
 
 	public boolean Frame(float delta) {
 		this.ido += delta;
-		float scradelta = this.scrarany * 
-		this.ax += scradelta;
+		//float scradelta = this.scrarany *
+		//this.ax += scradelta;
 
 		if(this.ido >= this.kovetkezo) {
 			//KovIdo();
