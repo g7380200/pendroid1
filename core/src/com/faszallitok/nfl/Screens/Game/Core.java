@@ -60,7 +60,7 @@ public class Core {
 		this.repulttav = 0;
 		this.szunyogstart = true;
 		this.scrkezdotavolsag = this.bx - this.ax;
-		this.scrarany = this.kezdotavolsag / this.scrkezdotavolsag;
+		this.scrarany = this.scrkezdotavolsag / this.kezdotavolsag;
 		this.ido = 0;
 		this.kovetkezo = 0;
 	}

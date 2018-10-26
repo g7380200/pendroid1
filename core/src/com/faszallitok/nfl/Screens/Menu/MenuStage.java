@@ -20,6 +20,7 @@ public class MenuStage extends MyStage {
 
     private MyButton play;
     private MyButton about;
+	private MyButton debug;
     private MyButton quit;
 
     public MenuStage(Batch batch, MyGdxGame game) {
@@ -51,6 +52,17 @@ public class MenuStage extends MyStage {
             }
         });
         addActor(about);
+
+        debug = new MyButton("DEBUG", game.getButtonStyle());
+        debug.setPosition(50, 390);
+        debug.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                super.clicked(event, x, y);
+                getGame().setScreen(new GameScreen(getGame(), new float[] { 8.0f, 5.0f, 30.0f, 70.0f, 100.0f }));
+            }
+        });
+        addActor(debug);
 
         quit = new MyButton("Kilépés", game.getButtonStyle());
         quit.setPosition(50, 130);
