@@ -11,7 +11,8 @@ public class DesktopLauncher {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.width = 1024;
 		config.height = 576;
-		config.title = "NeedForLegy: Mosquito Wanted";
+		//config.title = "NeedForLegy: Mosquito Wanted";
+		config.title = "MyGdxGame";
 
 		new LwjglApplication(new MyGdxGame(), config);
 	}
