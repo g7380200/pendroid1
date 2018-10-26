@@ -35,10 +35,4 @@ public class GameStage extends MyStage {
 	}
 
 	@Override public void init() {}
-
-	// ETTŐL LEFELE VAN A CORE TARTALMA
-
-	public float CoreInit(float sa, float sb, float tavolsag, float szunyogsebesseg, float ut) {
-		float repido = (sa + sb) / tavolsag;
-	}
 }
