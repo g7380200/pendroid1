@@ -59,33 +59,19 @@ public class GameStage extends MyStage {
 		core.szunyogx = 100;
 		addActor(szunyog);
 
-		core.asebesseg = 5.0f;
-		core.bsebesseg = 15.0f;
-		core.szunyogsebesseg = 30.0f;
-		core.ut = 100.0f;
-		core.kezdotavolsag = 70.0f;
-
-
 		//datas[] tömb:
 		//0: A sebesség
 		//1: B sebesség
 		//2: Szunyog sebesség
 		//3: távolság
-		//4: A távolság
-		//5: B távolság
+		//4: A távolság <=================== ez legyen az A-B távolsága
+		//5: B távolság <=================== ez nem kell
 
 		core.asebesseg = datas[0];
 		core.bsebesseg = datas[1];
 		core.szunyogsebesseg = datas[2];
-		core.ut = datas[3];
-
-		core.ax = (int)datas[4];
-		core.ax = (int)datas[5];
-
-		core.szunyogx = (int)datas[4] + 150;
-		core.kezdotavolsag = datas[3];
-
-
+		core.kezdotavolsag = data[3];
+		core.ut = datas[4];
 
 		core.CoreReset();
 		if(!core.Check()) System.exit(1);

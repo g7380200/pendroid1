@@ -67,11 +67,16 @@ public class Core {
 
 	public boolean Frame(float delta) {
 		this.ido += delta;
-		//float scradelta = this.scrarany *
-		//this.ax += scradelta;
+
+		float scradelta = this.scrarany * this.asebesseg * delta;
+		float scrbdelta = this.scrarany * this.bsebesseg * delta;
+
+		this.ax += scradelta;
+		this.bx -= scrbdelta;
 
 		if(this.ido >= this.kovetkezo) {
-			//KovIdo();
+			System.out.println("Kovido");
+			KovIdo();
 		}
 
 		if(this.repulttav >= this.ut) {
@@ -88,6 +93,7 @@ public class Core {
 
 	public void KovIdo() {
 		float idoatolbig = this.tavolsag / (this.szunyogsebesseg + (this.szunyogstart ? this.bsebesseg : this.asebesseg));
+		System.out.println("Kovetkezo valtas: " + idoatolbig);
 
 		float szunyogtavolsag = this.szunyogsebesseg * idoatolbig;
 		float atavolsag = this.asebesseg * idoatolbig;
