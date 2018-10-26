@@ -13,6 +13,7 @@ import com.faszallitok.nfl.MyBaseClasses.UI.MyButton;
 import com.faszallitok.nfl.MyGdxGame;
 
 public class Core {
+    /*
 	public static float asebesseg;
 	public static float bsebesseg;
 	public static float szunyogsebesseg;
@@ -51,5 +52,5 @@ public class Core {
 	public static float RepIdo() {
 		float repido = (sa + sb) / tavolsag;
 		return repido;
-	}
+	}*/
 }

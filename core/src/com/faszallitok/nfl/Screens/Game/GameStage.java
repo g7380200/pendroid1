@@ -15,6 +15,10 @@ import com.faszallitok.nfl.MyGdxGame;
 public class GameStage extends MyStage {
 	private OneSpriteStaticActor menu;
 
+	OneSpriteStaticActor aman;
+	OneSpriteStaticActor bman;
+	OneSpriteStaticActor szunyog;
+
 	public GameStage(Batch batch, MyGdxGame game, final GameScreen screen) {
 		super(new ExtendViewport(1024, 576, new OrthographicCamera(1024, 576)), batch, game);
 
@@ -32,6 +36,8 @@ public class GameStage extends MyStage {
 			}
 		});
 		addActor(menu);
+
+
 	}
 
 	@Override public void init() {}

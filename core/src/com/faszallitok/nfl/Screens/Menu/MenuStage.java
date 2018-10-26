@@ -25,13 +25,13 @@ public class MenuStage extends MyStage {
     public MenuStage(Batch batch, MyGdxGame game) {
         super(new ExtendViewport(1024, 576, new OrthographicCamera(1024, 576)), batch, game);
 
-        OneSpriteStaticActor bg = new OneSpriteStaticActor(Assets.manager.get(Assets.BG_MENU));
+        OneSpriteStaticActor bg = new OneSpriteStaticActor(Assets.manager.get(Assets.MENU));
         bg.setSize(getViewport().getWorldWidth(), getViewport().getWorldHeight());
 
         addActor(bg);
 
         play = new MyButton("Játék", game.getButtonStyle());
-        play.setPosition(getViewport().getWorldWidth() / 2 - play.getWidth() / 2, 250);
+        play.setPosition(50, 250);
         play.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -42,7 +42,7 @@ public class MenuStage extends MyStage {
         addActor(play);
 
         about = new MyButton("A Játékról", game.getButtonStyle());
-        about.setPosition(getViewport().getWorldWidth() / 2 - play.getWidth() / 2, 190);
+        about.setPosition(50, 190);
         about.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -53,7 +53,7 @@ public class MenuStage extends MyStage {
         addActor(about);
 
         quit = new MyButton("Kilépés", game.getButtonStyle());
-        quit.setPosition(getViewport().getWorldWidth() / 2 - play.getWidth() / 2, 130);
+        quit.setPosition(50, 130);
         quit.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
