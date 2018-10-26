@@ -12,14 +12,17 @@ import com.faszallitok.nfl.MyBaseClasses.Scene2D.OneSpriteStaticActor;
 import com.faszallitok.nfl.MyBaseClasses.UI.MyButton;
 import com.faszallitok.nfl.MyGdxGame;
 
-enum Adatok { NULL, ASEBESSEG, BSEBESSEG, SZUNYOGSEBESSEG, UT, KEZDOTAVOLSAG, REPIDO };
-
 public class Core {
-	public static float asebesseg;
-	public static float bsebesseg;
-	public static float szunyogsebesseg;
-	public static float ut;
-	public static float kezdotavolsag;
+	public float asebesseg;
+	public float bsebesseg;
+	public float szunyogsebesseg;
+	public float ut;
+	public float kezdotavolsag;
+	public int scrwidth;
+	public int scrheight;
+	public int ax;
+	public int bx;
+	public int szunyogx;
 
 	public float szunyogpozicio;
 	public float apozicio;
@@ -27,26 +30,59 @@ public class Core {
 	public float tavolsag;
 	public float repulttav;
 	public boolean szunyogstart;
+	public int scrkezdotavolsag;
+	public float scrarany;
+	public float ido;
+	public float kovetkezo;
 
-	public void CoreInit(float sa, float sb, float tavolsag, float szunyogsebesseg, float ut) {
+	public void Core() {};
+
+	public void CoreInit(float sa, float sb, float tavolsag, float szunyogsebesseg, float ut, int w, int h, int ax, int bx, int szunyogx) {
 		this.asebesseg = sa;
 		this.bsebesseg = sb;
 		this.kezdotavolsag = tavolsag;
 		this.ut = ut;
 		this.szunyogsebesseg = szunyogsebesseg;
+		this.scrwidth = w;
+		this.scrheight = h;
+		this.ax = ax;
+		this.bx = bx;
+		this.szunyogx = this.ax;
 
-		this.szunyogpozicio = 0;
-		this.apozicio = 0;
-		this.bpozicio = tavolsag;
-		this.tavolsag = tavolsag;
-		this.repulttav = 0;
-		this.szunyogstart = true;
+		CoreReset();
 	}
 
-	public boolean Check(Adatok adat) {
-		if(adat == Adatok.NULL || adat == Adatok.REPIDO) {
-			if(RepIdo() * this.szunyogsebesseg <= this.ut) return false;
+	public void CoreReset() {
+		this.szunyogpozicio = 0;
+		this.apozicio = 0;
+		this.bpozicio = this.kezdotavolsag;
+		this.tavolsag = this.kezdotavolsag;
+		this.repulttav = 0;
+		this.szunyogstart = true;
+		this.scrkezdotavolsag = this.bx - this.ax;
+		this.scrarany = this.kezdotavolsag / this.scrkezdotavolsag;
+		this.ido = 0;
+		this.kovetkezo = 0;
+	}
+
+	public boolean Frame(float delta) {
+		this.ido += delta;
+		float scradelta = this.scrarany * 
+		this.ax += scradelta;
+
+		if(this.ido >= this.kovetkezo) {
+			//KovIdo();
 		}
+
+		if(this.repulttav >= this.ut) {
+			//A szúnyog megtette az utat, screen váltás
+		}
+
+		return true;
+	}
+
+	public boolean Check() {
+		if(RepIdo() * this.szunyogsebesseg <= this.ut) return false;
 		return true;
 	}
 
@@ -61,6 +97,7 @@ public class Core {
 		this.apozicio += atavolsag;
 		this.bpozicio -= btavolsag;
 		this.szunyogstart = !this.szunyogstart;
+		this.kovetkezo += idoatolbig;
 	}
 
 	public float RepIdo() {
