@@ -91,9 +91,9 @@ public class Core {
 		}
 
 		if(this.ax >= this.bx) {
-			// hmmm... ha ez lefut, akkor gond van...
-			System.out.println("Igen, ez egy bug XD");
-			System.out.println(this.ax + " | " + this.bx);
+			System.out.println("Igen, ez egy bug mikor már majdnem összeértek, de ne foglalkozz vele XD");
+			System.out.println("Vége, repült idö: " + this.ido);
+			System.out.println(this.ax + " | " + this.bx + " -- " + this.repulttav + " | " + this.ut);
 			System.exit(1);
 		}
 
@@ -122,6 +122,7 @@ public class Core {
 
 		if(this.repulttav >= this.ut && !this.szunyogstart) {
 			System.out.println("Vége, repült idö: " + this.ido);
+			System.out.println(this.ax + " | " + this.bx + " -- " + this.repulttav + " | " + this.ut);
 			System.exit(1);
 		}
 	}
