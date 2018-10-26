@@ -13,6 +13,16 @@ import com.faszallitok.nfl.MyBaseClasses.UI.MyButton;
 import com.faszallitok.nfl.MyGdxGame;
 
 public class GameStage extends MyStage {
+	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! EZEKET A HITBOXOS PARAMÉTEREKET MÉG KELL ÁLLÍTANI
+	private final int ahitbox = -200;
+	private final int bhitbox = -50;
+	private final int szunyoghitbox = 20;
+
+	private final int astartx = 200;
+	private final int bstartx = 800;
+	private final int szunyogstarty = 50;
+
+
 	private OneSpriteStaticActor menu;
 
 	OneSpriteStaticActor aman;
@@ -44,28 +54,22 @@ public class GameStage extends MyStage {
 
 		aman = new OneSpriteStaticActor(Assets.manager.get(Assets.AMAN));
 		aman.setSize(aman.getWidth() / 4, aman.getHeight() / 4);
-		core.ax = 100;
+		core.ax = astartx;
 		aman.setX(core.ax);
 		addActor(aman);
 
 		bman = new OneSpriteStaticActor(Assets.manager.get(Assets.BMAN));
 		bman.setSize(bman.getWidth() / 4, bman.getHeight() / 4);
-		core.ax = 800;
+		core.bx = bstartx;
 		bman.setX(core.bx);
 		addActor(bman);
 
 		szunyog = new OneSpriteStaticActor(Assets.manager.get(Assets.SZUNYOG));
 		szunyog.setSize(szunyog.getWidth() / 12, szunyog.getHeight() / 12);
-		core.szunyogx = 100;
+		core.szunyogx = core.ax;
+		szunyog.setX(core.szunyogx);
+		szunyog.setY(szunyogstarty);
 		addActor(szunyog);
-
-		//datas[] tömb:
-		//0: A sebesség
-		//1: B sebesség
-		//2: Szunyog sebesség
-		//3: távolság
-		//4: A távolság <=================== ez legyen az A-B távolsága
-		//5: B távolság <=================== ez nem kell
 
 		core.asebesseg = datas[0];
 		core.bsebesseg = datas[1];
@@ -79,13 +83,9 @@ public class GameStage extends MyStage {
 
 	@Override public void act(float delta) {
 		core.Frame(delta);
-		aman.setX(core.ax);
-		bman.setX(core.bx);
-		szunyog.setX(core.szunyogx);
-
-		aman.setX(aman.getX() + delta * core.asebesseg);
-		bman.setX(bman.getX() - delta * core.bsebesseg);
-		szunyog.setX(szunyog.getX() + (core.szunyogstart ? 1 : -1) * delta * core.szunyogsebesseg);
+		aman.setX(core.ax + ahitbox);
+		bman.setX(core.bx + bhitbox);
+		szunyog.setX(core.szunyogx + szunyoghitbox);
 	}
 
 	@Override public void init() {}

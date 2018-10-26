@@ -63,16 +63,22 @@ public class Core {
 		this.scrarany = this.scrkezdotavolsag / this.kezdotavolsag;
 		this.ido = 0;
 		this.kovetkezo = 0;
+
+		System.out.println("========= Core start ==========");
+		System.out.println("a sebesség: " + this.asebesseg);
+		System.out.println("b sebesség: " + this.bsebesseg);
+		System.out.println("sz sebesség: " + this.szunyogsebesseg);
+		System.out.println("A-B táv: " + this.kezdotavolsag);
+		System.out.println("Repülni kívánt táv: " + this.ut);
+		System.out.println("===============================");
 	}
 
 	public boolean Frame(float delta) {
 		this.ido += delta;
 
-		float scradelta = this.scrarany * this.asebesseg * delta;
-		float scrbdelta = this.scrarany * this.bsebesseg * delta;
-
-		this.ax += scradelta;
-		this.bx -= scrbdelta;
+		this.ax += this.scrarany * this.asebesseg * delta;
+		this.bx -= this.scrarany * this.bsebesseg * delta;
+		this.szunyogx += (this.szunyogstart ? -1 : 1) * delta * this.szunyogsebesseg * this.scrarany;
 
 		if(this.ido >= this.kovetkezo) {
 			System.out.println("Kovido");
@@ -80,7 +86,15 @@ public class Core {
 		}
 
 		if(this.repulttav >= this.ut) {
+			System.out.println("Távolság átlépve, kilépés az A ember elérésekor");
 			//A szúnyog megtette az utat, screen váltás
+		}
+
+		if(this.ax >= this.bx) {
+			// hmmm... ha ez lefut, akkor gond van...
+			System.out.println("Igen, ez egy bug XD");
+			System.out.println(this.ax + " | " + this.bx);
+			System.exit(1);
 		}
 
 		return true;
@@ -104,6 +118,12 @@ public class Core {
 		this.bpozicio -= btavolsag;
 		this.szunyogstart = !this.szunyogstart;
 		this.kovetkezo += idoatolbig;
+		this.tavolsag -= (this.asebesseg + this.bsebesseg) * idoatolbig;
+
+		if(this.repulttav >= this.ut && !this.szunyogstart) {
+			System.out.println("Vége, repült idö: " + this.ido);
+			System.exit(1);
+		}
 	}
 
 	public float RepIdo() {

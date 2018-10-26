@@ -59,7 +59,7 @@ public class MenuStage extends MyStage {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 super.clicked(event, x, y);
-                getGame().setScreen(new GameScreen(getGame(), new float[] { 8.0f, 5.0f, 30.0f, 70.0f, 100.0f }));
+                getGame().setScreen(new GameScreen(getGame(), new float[] { 8.0f, 5.0f, 30.0f, 70.0f, 150.0f }));
             }
         });
         addActor(debug);
