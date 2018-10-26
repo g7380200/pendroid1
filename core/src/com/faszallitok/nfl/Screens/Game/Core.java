@@ -12,44 +12,59 @@ import com.faszallitok.nfl.MyBaseClasses.Scene2D.OneSpriteStaticActor;
 import com.faszallitok.nfl.MyBaseClasses.UI.MyButton;
 import com.faszallitok.nfl.MyGdxGame;
 
+public enum Adatok { NULL, ASEBESSEG, BSEBESSEG, SZUNYOGSEBESSEG, UT, KEZDOTAVOLSAG, REPIDO };
+
 public class Core {
 	public static float asebesseg;
 	public static float bsebesseg;
 	public static float szunyogsebesseg;
 	public static float ut;
 	public static float kezdotavolsag;
-	public static float repido;
 
 	public static float szunyogpozicio;
 	public static float apozicio;
 	public static float bpozicio;
+	public static float tavolsag;
+	public static float repulttav;
+	public static boolean szunyogstart;
 
-	public enum Adatok { NULL, ASEBESSEG, BSEBESSEG, SZUNYOGSEBESSEG, UT, KEZDOTAVOLSAG, REPIDO } hianyzoadat;
-
-	public static void CoreInit(float sa, float sb, float tavolsag, float szunyogsebesseg, float ut, float repido) {
+	public static void CoreInit(float sa, float sb, float tavolsag, float szunyogsebesseg, float ut) {
 		this.asebesseg = sa;
 		this.bsebesseg = sb;
 		this.kezdotavolsag = tavolsag;
 		this.ut = ut;
-		this.repido = repido;
 		this.szunyogsebesseg = szunyogsebesseg;
-		this.hianyzoadat = hianyzoadat;
 
 		this.szunyogpozicio = 0;
 		this.apozicio = 0;
 		this.bpozicio = tavolsag;
+		this.tavolsag = tavolsag;
+		this.repulttav = 0;
+		this.szunyogstart = true;
 	}
 
-	public static boolean Check(enum Adatok adat, enum Adatok hianyzoadat) {
+	public static boolean Check(Adatok adat) {
+		if(adat == Adatok.NULL || adat == Adatok.REPIDO) {
+			if(RepIdo() * this.szunyogsebesseg <= this.ut) return false;
+		}
 		return true;
 	}
 
-	public static float KovIdo() {
-		
+	public static void KovIdo() {
+		float idoatolbig = this.tavolsag / (this.szunyogsebesseg + (this.szunyogstart ? this.bsebesseg : this.asebesseg));
+
+		float szunyogtavolsag = this.szunyogsebesseg * idoatolbig;
+		float atavolsag = this.asebesseg * idoatolbig;
+		float btavolsag = this.bsebesseg * idoatolbig;
+
+		this.repulttav += szunyogtavolsag;
+		this.apozicio += atavolsag;
+		this.bpozicio -= btavolsag;
+		this.szunyogstart = !this.szunyogstart;
 	}
 
 	public static float RepIdo() {
-		float repido = (sa + sb) / tavolsag;
+		float repido = this.tavolsag / (asebesseg + bsebesseg);
 		return repido;
 	}
 }
